@@ -7,11 +7,8 @@ from models.user import User
 class UserController():
     
     def index(self):
-        print("ENTROU")
         users = User.query.all()
-        [print(user) for user in users]
-        print(users)
-        return "OK"
+        return jsonify([user.serialize() for user in users])
 
     def store(self):
 
